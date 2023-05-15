@@ -1,0 +1,44 @@
+{
+    "information": [
+        {
+            "statusCode": 200,
+            "message": "OK",
+            "description": "Success"
+        },
+        {
+            "statusCode": 201,
+            "message": "Data Save",
+            "description": "Successful operation"
+        },
+        {
+            "statusCode": 204,
+            "message": "No Content",
+            "description": "No matches found"
+        },
+        {
+            "statusCode": 304,
+            "message": "Not Modified",
+            "description": "Operation not performed "
+        },
+        {
+            "statusCode": 400,
+            "message": "Bad Parameters",
+            "description": "Incomplete parameters or Invalid parameters "
+        },
+        {
+            "statusCode": 404,
+            "message": "Data Not Found",
+            "description": "no matches found "
+        },
+        {
+            "statusCode": 500,
+            "message": "Internal server error",
+            "description": "The server encountered an unexpected condition that prevented it from fulfilling the request."
+        },
+        {
+            "statusCode": 507,
+            "message": "Duplicate entry",
+            "description": "Duplicate reference data, please check the information and try again."
+        }
+    ]
+}

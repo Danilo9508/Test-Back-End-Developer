@@ -1,10 +1,11 @@
 const express = require('express'),
   app = express(),
   cors = require('cors'),
-routes = require('./src/api');
+routes = require('./src/api'),
+bodyParser = require('body-parser');
 
-// app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-// app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '100kb' }));
+app.use(bodyParser.json({ limit: '100kb' }));
 app.use(cors());
 
 app.use('/', routes);
