@@ -12,18 +12,22 @@ const driverSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
-
   document: {
     allowNull: false,
     type: DataTypes.STRING,
     unique: true,
   },
+  state: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    defaultValue: 'ACTIVE'
+  }
 
 };
 
 class Driver extends Model {
   static associate() {
-    
+
   }
 
   static config(sequelize) {

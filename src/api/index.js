@@ -8,6 +8,6 @@ const driver = require('./driver');
 //routes
 
 genericRoutes.use('/rider', rider);
-//genericRoutes.use('/driver', driver);
+genericRoutes.use('/driver', driver);
 
 module.exports = genericRoutes;

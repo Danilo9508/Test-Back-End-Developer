@@ -17,7 +17,7 @@ const responseStatusMessageCode = (res, code, error) => {
             res.status(item.statusCode).send({
                 statusCode: item.statusCode,
                 message: item.message,
-                description: error.output,
+                description: error.output? error.output:item.description,
             });
         }
     });

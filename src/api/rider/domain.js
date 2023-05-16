@@ -2,7 +2,7 @@
 const service = require('./service')
 const domain = require('../driver/domain')
 const { buildOutput } = require('../../utils/utilities')
-const { statusCode } = require('../../utils/const')
+const { statusCode,statusDriver } = require('../../utils/const')
 
 const requestRider = async (body) => {
     try {
@@ -14,10 +14,11 @@ const requestRider = async (body) => {
                 idRiderFK: body.idRider,
                 idDriverFK: driver.idDriver,
                 latitudeInit: body.latitude,
-                lengthInit: body.logitude
+                longitudeInit: body.longitude
             }
             const response = await service.createTravel(travel)
             if (response) {
+                domain.updateDriverState(driver.idDriver, statusDriver.OCUPED);
                 return `Your ride was successfully created, the driver has been assigned to you: ${driver.fullName} `
             } else {
                 throw buildOutput(statusCode.NOT_MODIFIED, `Travel could not be created`)

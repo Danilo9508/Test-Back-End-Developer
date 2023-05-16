@@ -24,12 +24,16 @@ const travelSchema = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
     },
+    totalAmount: {
+        allowNull: true,
+        type: DataTypes.FLOAT,
+    },
     latitudeInit: {
         allowNull: false,
         type: DataTypes.FLOAT,
 
     },
-    lengthInit: {
+    longitudeInit: {
         allowNull: false,
         type: DataTypes.FLOAT,
 
@@ -39,7 +43,7 @@ const travelSchema = {
         type: DataTypes.FLOAT,
 
     },
-    lengthEnd: {
+    longitudeEnd: {
         allowNull: true,
         type: DataTypes.FLOAT,
 

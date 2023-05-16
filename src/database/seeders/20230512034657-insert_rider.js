@@ -5,8 +5,14 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert(RIDER_TABLE, [
       { fullName: 'Juan' },
-      { fullName: 'Daniel' },
-      { fullName: 'Andrea' },
+      { fullName: 'Angie' },
+      { fullName: 'Dario' },
+      { fullName: 'Sara' },
+      { fullName: 'Miguel' },
+      { fullName: 'Yuli' },
+      { fullName: 'Marx' },
+      { fullName: 'Manuel' },
+      { fullName: 'Jairo' },
     ])
   },
 

@@ -1,5 +1,5 @@
 'use strict';
 const router = require('express').Router();
 const controller = require('./controller');
-//router.post('/requestTravel', controller.requestTravel)
+router.post('/travelFinish', controller.travelFinish)
 module.exports = router;

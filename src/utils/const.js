@@ -13,8 +13,13 @@ const roles = {
     RIDER: "Rider",
     DRIVER: "Driver"
 }
+const statusDriver={
+    ACTIVE:'ACTIVE',
+    OCUPED:'OCUPED'
+}
 
 module.exports={
     statusCode,
-    roles
+    roles,
+    statusDriver
 }
