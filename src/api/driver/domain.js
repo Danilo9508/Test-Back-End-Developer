@@ -40,11 +40,11 @@ const travelFinish = async (body) => {
     try {
         const dateEnd = new Date();
         let travel = await service.findOneTravel(body.idDriver);
-        if (!!travel) {
+        if (!!travel && travel.length > 0) {
 
             travel = travel[0].dataValues;
-            const km =  calculateDistanceInKM(travel.latitudeInit, travel.longitudeInit, body.latitude, body.longitude);
-            const minute =  calculateMinutes(travel.dateStart, dateEnd);
+            const km = calculateDistanceInKM(travel.latitudeInit, travel.longitudeInit, body.latitude, body.longitude);
+            const minute = calculateMinutes(travel.dateStart, dateEnd);
             console.log('minnn', minute);
             console.log('kmmm', km);
             const totalAmount = calculeteTotalAmount(km, minute)
