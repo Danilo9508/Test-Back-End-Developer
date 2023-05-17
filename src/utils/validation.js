@@ -1,3 +1,4 @@
+'use strict';
 const validationRider = (request) => {
     return !!request &&!!request.idRider && !!request.latitude && !!request.longitude;
 }

@@ -6,6 +6,7 @@ const domain = require('./domain');
 const travelFinish = async (req, res) => {
     try {
         console.log(req.body);
+        
         if (validationDriver(req.body)) {
             const response = await domain.travelFinish(req.body);
             responseStatusData(res, statusCode.SUCCESS, response);

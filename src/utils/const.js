@@ -1,3 +1,4 @@
+'use strict';
 const statusCode = {
     OK: 200,
     SUCCESS: 201,

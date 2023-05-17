@@ -1,8 +1,8 @@
+'use strict';
 const { Sequelize } = require('sequelize');
 const setupModels = require('./../database/models');
 
-require("dotenv").config();
-const { USERDB, PASSDB, NAMEDB, HOSTDB,PORTDB } = process.env
+const { USERDB, PASSDB, NAMEDB, HOSTDB,PORTDB } = require('../utils/config');
 
 const USER = encodeURIComponent(USERDB);
 const PASSWORD = encodeURIComponent(PASSDB);

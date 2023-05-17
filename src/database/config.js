@@ -1,5 +1,4 @@
-require("dotenv").config();
-const { USERDB, PASSDB, NAMEDB, PORTDB, HOSTDB } = process.env
+const { USERDB, PASSDB, NAMEDB, PORTDB, HOSTDB } = require('../utils/config')
 
 const USER = encodeURIComponent(USERDB);
 const PASSWORD = encodeURIComponent(PASSDB);

@@ -1,6 +1,6 @@
 "use strict";
 const service = require('./service')
-const { buildOutput, calculeteTotalAmount, calculateDistanceInKM, calculateHours } = require('../../utils/utilities')
+const { buildOutput, calculeteTotalAmount, calculateDistanceInKM, calculateMinutes } = require('../../utils/utilities')
 const { statusCode, statusDriver } = require('../../utils/const');
 const { postPayment } = require('../../utils/externalService');
 /**
@@ -44,7 +44,7 @@ const travelFinish = async (body) => {
 
             travel = travel[0].dataValues;
             const km = calculateDistanceInKM(travel.latitudeInit, travel.longitudeInit, body.latitude, body.longitude);
-            const minute = calculateHours(travel.dateStart, dateEnd)
+            const minute = calculateMinutes(travel.dateStart, dateEnd)
             const travelData = {
                 totalAmount: calculeteTotalAmount(km, minute),
                 latitudeEnd: body.latitude,

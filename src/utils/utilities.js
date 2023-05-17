@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 const moment = require('moment');
-require("dotenv").config();
-const { VALUE_FOR_KM, VALUE_FOR_MINUTE, VALUE_BASE } = process.env
+const { statusCode } = require('../utils/const')
+const { VALUE_FOR_KM, VALUE_FOR_MINUTE, VALUE_BASE } = require('../utils/config');
 /**
  * calculates the distance in KM between two points with latitude and longitude
  * @param {*} lat1 starting latitude
@@ -12,18 +12,22 @@ const { VALUE_FOR_KM, VALUE_FOR_MINUTE, VALUE_BASE } = process.env
  */
 const calculateDistanceInKM = (lat1, lon1, lat2, lon2) => {
     try {
-        lat1 = degreesToRadians(lat1);
-        lon1 = degreesToRadians(lon1);
-        lat2 = degreesToRadians(lat2);
-        lon2 = degreesToRadians(lon2);
-        const RADIUS_EARTH_IN_KILOMETERS = 6371;
-        let differenceBetweenLongitude = (lon2 - lon1);
-        let differenceBetweenLatitudes = (lat2 - lat1);
-        let a = Math.pow(Math.sin(differenceBetweenLatitudes / 2.0), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(differenceBetweenLongitude / 2.0), 2);
-        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return parseInt(RADIUS_EARTH_IN_KILOMETERS * c);
+        if (!!lat1 && !!lon1 && !!lat2 && !!lon2) {
+            lat1 = degreesToRadians(lat1);
+            lon1 = degreesToRadians(lon1);
+            lat2 = degreesToRadians(lat2);
+            lon2 = degreesToRadians(lon2);
+            const RADIUS_EARTH_IN_KILOMETERS = 6371;
+            let differenceBetweenLongitude = (lon2 - lon1);
+            let differenceBetweenLatitudes = (lat2 - lat1);
+            let a = Math.pow(Math.sin(differenceBetweenLatitudes / 2.0), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(differenceBetweenLongitude / 2.0), 2);
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return parseInt(RADIUS_EARTH_IN_KILOMETERS * c);
+        } else {
+            throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, 'Bad Parameters', { fnName: 'calculateDistanceInKM', err: 'Bad Parameters' })
+        }
     } catch (error) {
-        console.log('calculateDistanceInKM ',error)
+        throw error
     }
 }
 
@@ -36,10 +40,14 @@ const degreesToRadians = (degrees) => {
  * @param {*} dateFinish 
  * @returns 
  */
-const calculateHours = (dateInit, dateFinish) => {
-    const format = "YYYY-MM-DD HH:mm:ss";
-    const date1 = moment(dateInit, format), date2 = moment(dateFinish, format);
-    return date2.diff(date1, 'm');
+const calculateMinutes = (dateInit, dateFinish) => {
+    if (!!dateInit && !!dateFinish) {
+        const format = "YYYY-MM-DD HH:mm:ss";
+        const date1 = moment(dateInit, format), date2 = moment(dateFinish, format);
+        return date2.diff(date1, 'm');
+    } else {
+        throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, 'Bad Parameters', { fnName: 'calculateMinutes', err: 'Bad Parameters' })
+    }
 }
 /**
  * 
@@ -48,7 +56,11 @@ const calculateHours = (dateInit, dateFinish) => {
  * @returns 
  */
 const calculeteTotalAmount = (km, minute) => {
-    return (parseInt(VALUE_FOR_KM) * km) + (parseInt(VALUE_FOR_MINUTE) * minute) + parseInt(VALUE_BASE);
+    if (!!km && !!minute) {
+        return (parseInt(VALUE_FOR_KM) * km) + (parseInt(VALUE_FOR_MINUTE) * minute) + parseInt(VALUE_BASE);
+    } else {
+        throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, 'Bad Parameters', { fnName: 'calculeteTotalAmount', err: 'Bad Parameters' });
+    }
 }
 
 /**
@@ -72,7 +84,7 @@ Array.prototype.sample = function () {
 module.exports = {
     calculateDistanceInKM,
     buildOutput,
-    calculateHours,
+    calculateMinutes,
     calculeteTotalAmount
 
 }

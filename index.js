@@ -1,7 +1,7 @@
-require('dotenv').config();
+'use strict';
+const { PORT } = require('../utils/config');
 const server = require('./server');
-const port = process.env.PORT || 4000;
 
-server.listen(port, async () => {
-  console.log(`Listening on port ${port}`);
+server.listen(PORT, async () => {
+  console.log(`Listening on port ${PORT}`);
 });
