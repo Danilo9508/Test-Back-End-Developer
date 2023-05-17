@@ -3,7 +3,11 @@ const service = require('./service')
 const domain = require('../driver/domain')
 const { buildOutput } = require('../../utils/utilities')
 const { statusCode, statusDriver } = require('../../utils/const')
-
+/**
+ * creates the rider request and assigns a driver to it 
+ * @param {*} body rider request data
+ * @returns 
+ */
 const requestRider = async (body) => {
     try {
         const riderExits = await service.findIfExistsRider(body.idRider);

@@ -1,5 +1,10 @@
 "use strict";
 const json = require("./message.json");
+/**
+ * dynamic response function
+ * @param {any} res allows you to use the methods provided by the response
+ * @param {Number} code code response 
+ */
 const responseStatus = (res, code) => {
     json.information.forEach((item) => {
         if (item.statusCode === code) {
@@ -11,6 +16,12 @@ const responseStatus = (res, code) => {
         }
     });
 };
+/**
+ * dynamic response function with error
+ * @param {any} res  allows you to use the methods provided by the response
+ * @param {Number} code code response
+ * @param {any} error error generate
+ */
 const responseStatusMessageCode = (res, code, error) => {
     json.information.forEach((item) => {
         if (item.statusCode === code) {
@@ -23,6 +34,12 @@ const responseStatusMessageCode = (res, code, error) => {
     });
 
 };
+/**
+ * dynamic response function with status 200
+ * @param {any} res  allows you to use the methods provided by the response
+ * @param {Number} code code response
+ * @param {any} desc response description 
+ */
 const responseStatus200 = (res, code, desc) => {
     json.information.forEach((item) => {
         if (item.statusCode === code) {
@@ -34,6 +51,12 @@ const responseStatus200 = (res, code, desc) => {
         }
     });
 };
+/**
+ * dynamic response function with data
+ * @param {any} res  allows you to use the methods provided by the response
+ * @param {Number} code code response
+ * @param {any} data response data 
+ */
 const responseStatusData = (res, code, data) => {
     json.information.forEach((item) => {
         if (item.statusCode === code) {

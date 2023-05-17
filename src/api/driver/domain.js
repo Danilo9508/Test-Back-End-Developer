@@ -35,6 +35,11 @@ const updateDriverState = async (idDriver, status) => {
         }
     }
 }
+/**
+ * end of the trip
+ * @param {Object} body information driver
+ * @returns data of response 
+ */
 const travelFinish = async (body) => {
 
     try {
