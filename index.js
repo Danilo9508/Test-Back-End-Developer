@@ -1,5 +1,5 @@
 'use strict';
-const { PORT } = require('../utils/config');
+const { PORT } = require('./src/utils/config');
 const server = require('./server');
 
 server.listen(PORT, async () => {
