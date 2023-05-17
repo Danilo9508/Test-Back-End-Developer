@@ -43,10 +43,14 @@ const travelFinish = async (body) => {
         if (!!travel) {
 
             travel = travel[0].dataValues;
-            const km = calculateDistanceInKM(travel.latitudeInit, travel.longitudeInit, body.latitude, body.longitude);
-            const minute = calculateMinutes(travel.dateStart, dateEnd)
+            const km =  calculateDistanceInKM(travel.latitudeInit, travel.longitudeInit, body.latitude, body.longitude);
+            const minute =  calculateMinutes(travel.dateStart, dateEnd);
+            console.log('minnn', minute);
+            console.log('kmmm', km);
+            const totalAmount = calculeteTotalAmount(km, minute)
+            console.log('totalAmount', totalAmount);
             const travelData = {
-                totalAmount: calculeteTotalAmount(km, minute),
+                totalAmount: totalAmount,
                 latitudeEnd: body.latitude,
                 longitudeEnd: body.longitude,
                 dateEnd: dateEnd
@@ -55,7 +59,13 @@ const travelFinish = async (body) => {
             if (!!response) {
                 await service.updateDriverState(body.idDriver, statusDriver.ACTIVE)
                 let payment = await postPayment(travelData.totalAmount);
-                return { distance_traveled: `${km} KM`, minutes: minute, payment_reference: payment.data.reference, payment_status: payment.data.status, totalAmount: travelData.totalAmount };
+                return {
+                    distance_traveled: `${km} KM`,
+                    minutes: minute,
+                    payment_reference: payment.data.reference,
+                    payment_status: payment.data.status,
+                    totalAmount: travelData.totalAmount
+                };
             } else {
                 throw buildOutput(statusCode.NOT_MODIFIED, `Error at the end of the Travel`)
             }

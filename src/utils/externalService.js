@@ -14,7 +14,7 @@ const { ACCEPTENCE_TOKEN, CUSTOMER_EMAIL, TOKEN_WOMPI, PAYMENT_ID, BEARER_TOKEN 
 const postPayment = async (amount) => {
     amount = parseInt(amount.toString().concat('00'))
     try {
-        data = {
+       const data = {
             acceptance_token: ACCEPTENCE_TOKEN,
             amount_in_cents: amount, // Monto current centavos
             currency: "COP", // Moneda
@@ -34,7 +34,6 @@ const postPayment = async (amount) => {
         const response = await axios.post(`${process.env.API_WOMPI_URI}/transactions`, data, { headers });
         return response.data;
     } catch (error) {
-        console.log(error.response.data)
         throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, '', { function: 'postPayment-ExternalService', error });
     }
 };

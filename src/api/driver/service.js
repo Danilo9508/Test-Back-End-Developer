@@ -7,7 +7,6 @@ const findDriverAll = async () => {
         return await models.Driver.findAll({ where: { state: 'ACTIVE' } });
     } catch (error) {
         throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, '', { function: 'findDriverAll-Service', error });
-
     }
 }
 const updateDriverState = async (idDriver, state) => {

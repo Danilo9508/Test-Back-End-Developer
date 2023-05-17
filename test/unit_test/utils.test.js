@@ -48,7 +48,7 @@ describe('test unit for utilities', () => {
             expect(error.typeOutput).toBeDefined()
             expect(error.typeOutput).toBe(500)
             expect(error.output).toBeDefined()
-            expect(error.output).toBe('Bad Parameters')
+            expect(error.output).toBe('the variables (minute) and (km) must be greater than 0')
         }
     });
     test('test success buildOutput', () => {

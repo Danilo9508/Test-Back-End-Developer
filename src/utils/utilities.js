@@ -30,14 +30,18 @@ const calculateDistanceInKM = (lat1, lon1, lat2, lon2) => {
         throw error
     }
 }
-
+/**
+ * convert degrees To Radians
+ * @param {Number} degrees 
+ * @returns 
+ */
 const degreesToRadians = (degrees) => {
     return degrees * Math.PI / 180;
 };
 /**
- * 
- * @param {*} dateInit 
- * @param {*} dateFinish 
+ * calculate the minute difference
+ * @param {Date} dateInit 
+ * @param {Date} dateFinish 
  * @returns 
  */
 const calculateMinutes = (dateInit, dateFinish) => {
@@ -50,16 +54,18 @@ const calculateMinutes = (dateInit, dateFinish) => {
     }
 }
 /**
- * 
- * @param {*} km 
- * @param {*} minute 
+ * calculete total amount
+ * @param {Number} km 
+ * @param {Number} minute 
  * @returns 
  */
 const calculeteTotalAmount = (km, minute) => {
-    if (!!km && !!minute) {
+    
+    if(minute===0) minute=1;
+    if (km > 0 && minute > 0) {
         return (parseInt(VALUE_FOR_KM) * km) + (parseInt(VALUE_FOR_MINUTE) * minute) + parseInt(VALUE_BASE);
     } else {
-        throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, 'Bad Parameters', { fnName: 'calculeteTotalAmount', err: 'Bad Parameters' });
+        throw buildOutput(statusCode.INTERNAL_SERVER_ERROR, 'the variables (minute) and (km) must be greater than 0', { fnName: 'calculeteTotalAmount', err: 'Bad Parameters' });
     }
 }
 

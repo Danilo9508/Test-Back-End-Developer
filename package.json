@@ -4,7 +4,7 @@
   "description": "test back-end developer",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test&& jest --verbose",
+    "test": "set NODE_ENV=test&& jest --detectOpenHandles --verbose",
     "start": "set NODE_ENV=production&& node index.js",
     "dev": "set NODE_ENV=development&& nodemon index.js",
     "migrations:generate": "set NODE_ENV=production&& sequelize-cli migration:generate --name",
