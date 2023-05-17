@@ -60,8 +60,8 @@ const calculateMinutes = (dateInit, dateFinish) => {
  * @returns 
  */
 const calculeteTotalAmount = (km, minute) => {
-    
-    if(minute===0) minute=1;
+
+    if (minute === 0) minute = 1;
     if (km > 0 && minute > 0) {
         return (parseInt(VALUE_FOR_KM) * km) + (parseInt(VALUE_FOR_MINUTE) * minute) + parseInt(VALUE_BASE);
     } else {
